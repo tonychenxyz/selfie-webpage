@@ -3,13 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="SelfIE uses Large Language Models to interpret their own hidden embeddings.">
+  <meta name="keywords" content="SelfIE, interpertability, LLM">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
-
+  <title>SelfIE: Self-Interpretation of Large Language Model Embeddings</title>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -32,7 +30,8 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤳</text></svg>">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -52,28 +51,13 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
+          <a class="navbar-item" href="https://arxiv.org/abs/2310.10591">
+            INVITE: INterpret Vision Transformer via Text Explanations
           </a>
         </div>
       </div>
@@ -88,32 +72,21 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-1 publication-title">&#129331;<span class="dnerf">SelfIE</span>: Self-Interpretation of Large Language Model Embeddings</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="https://www.linkedin.com/in/haozhe-chen">Haozhe Chen</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="https://www.cs.columbia.edu/~vondrick/">Carl Vondrick</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+              <a href="http://www.cs.columbia.edu/~mcz/">Chengzhi Mao</a><sup>123</sup>,
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>Columbia University,</span>
+            <span class="author-block"><sup>2</sup>Mila,</span>
+            <span class="author-block"><sup>3</sup>McGill University</span>
           </div>
 
           <div class="column has-text-centered">
@@ -175,80 +148,27 @@
   </div>
 </section>
 
-<section class="hero teaser">
+
+<section class="teaser-and-method">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+    <div class="teaser">
+      <h2 class="teaser-text">
+        <span class="dnerf">SelfIE</span> interprets each hidden embedding vector in a transformer-based LLM with natural language descriptions. We can use <span class="dnerf">SelfIE</span> to understand how an LLM arrive at its answer internally. 
+      </h2>
+          <img src="static/images/real-teaser.svg" alt="SelfIE interprets hidden embedding with text descriptions">
+    </div>
+</section>
+<section class="safety-example-top">
+  <div class="container is-max-desktop">
+    <div class="safety-problem-top">
+      <h2 class="teaser-text">
+        <b>Example</b>: We used <span class="dnerf">SelfIE</span> to detect harmful knowledge inside LLM and attain deep alignment by erasing the knowledge.
       </h2>
     </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
+    <div class = "safety-top-image">
+      <img src="static/images/safety-solved-all-v3.svg" alt="SelfIE helps understand safety issue inside LLM">
     </div>
-  </div>
 </section>
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -258,155 +178,97 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            The expanding impacts of Large Language Models (LLMs) increasingly require the answer to: How do LLMs obtain their answers? The ability to explain and control an LLM's reasoning process is key for reliability, transparency, and future model developments. We propose <span class="dnerf">SelfIE</span> (Self-Interpretation of Embeddings) that enables LLMs to interpret their own embeddings in natural language by leveraging their ability to respond inquiry about a given passage. Capable of interpreting open-world concepts in the hidden embeddings, <span class="dnerf">SelfIE</span> reveals LLM internal reasoning in cases such as making ethical decisions, internalizing prompt injection, and recalling harmful knowledge. <span class="dnerf">SelfIE</span>'s text descriptions on hidden embeddings also open up new avenues to control LLM reasoning. We propose Supervised Control, which allows editing open-ended concepts while only requiring gradient computation of individual layer. We extend RLHF to hidden embeddings and propose Reinforcement Control that erases harmful knowledge in LLM without supervision targets. 
           </p>
         </div>
       </div>
     </div>
+
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">How does  <span class="dnerf">SelfIE</span> work?</h2>
+          <div class="content has-text-justified">
+            <div class = "surgery-image">
+              <img src="static/images/surgery-final.svg" alt="SelfIE interprets LLM hidden embedding with a modified interpretation forward pass">
+            </div>
+            <ol>
+              <li>Extract hidden embedding to interpret from an original forward pass of an input prompt through LLM. </li>
+              <li>Interpret the embedding with interpretation forward pass through the same LLM.</li>
+              <li>The interpretation forward pass takes in an interpretation prompt to summarize the embedding. </li>
+              <li>Inject the embedding to interpret in the placeholder of the interpretation prompt during interpretation forward pass.</li>
+            </ol>
+            <p>We also calculate a Relevancy Score as treatment effect of injecting embedding to intererpt in interpretation forward pass to measure how relevant the interpretation is to the embedding being interpreted. Relevancy Score will be shown in highlight in examples below.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Understand LLM reasoning with <span class="dnerf">SelfIE</span></h2>
+            <div class="content has-text-justified">
+              <p> While previous interpretation methods such as linear probes can only interpret a closed set of concepts with training, <span class="dnerf">SelfIE</span> can interpret open-world concepts without any training. We therefore could use <span class="dnerf">SelfIE</span> to understand LLM internal reasoning in general. </p>
+              
+              <div class = "qualitative-understanding-images">
+                <img src="static/images/moral-web.svg" alt="Understand LLM reasoning when explanation changes answer with SelfIE">
+              </div>
+              <p><b>Access Reasoning When Explanation Changes Response.</b> When LLaMA is asked about making a decision in the trolley problem scenario, attaching <em>explain reason.</em> at the end of the prompt alters LLaMA's answer. Therefore, we cannot access LLaMA's reasoning to the answer <em>Yes</em> when asked to answer in only one word from the output. <span class="dnerf">SelfIE</span> reveals that the answer <em>Yes</em> might be result of conforming to majority opinions.</p>
+              <div class = "qualitative-understanding-images">
+                <img src="static/images/prompt_injection_web.svg" alt="Understand why prompt injection works with SelfIE">
+              </div>
+              <p><b>Why Prompt Injection Works.</b> We use <span class="dnerf">SelfIE</span> to understand why prompt injections steer LLaMA to provide harmful answers. <span class="dnerf">SelfIE</span> reveals that the model concludes urgency from the exclamation mark in the early layer and infers user is in crisis in the late layers, before finally complying with harmful requests to avoid user aggression. </p>
+              <div class = "qualitative-understanding-images">
+                <img src="static/images/physics-web.svg" alt="Understand how LLM reasons through a physics question with SelfIE">
+              </div>
+              <p><b>Reasoning with Knowledge.</b> We use <span class="dnerf">SelfIE</span> to examine how LLaMA answers a physics reasoning question. We found that the model extracts the <em>glittery.</em> aspect of <em>syrup.</em> in early layers, grasps <em>thickness</em> as the relevant quality, and retrieves the advanced physics concept <em>viscosity.</em> that is related to thickness.  </p>
+              <div class = "qualitative-understanding-images">
+                <img src="static/images/hallucination.svg" alt="Understand how LLM hallucinates with SelfIE">
+              </div>
+              <p><b>How hallucination occurs.</b> We use <span class="dnerf">SelfIE</span> to trace how LLaMA hallucinates when responding to a question involving a fictitious name. LLaMA first recalls <em>Mc</em> as in <em>McDonalds</em> in <em>Scotland</em> and associate <em>McQueen</em> with <em>Scotland</em>. It then associate <em>Mc</em> and <em>Scotland</em> with a similar name <em>McLean</em> who is a doctor. It finally combines the information about <em>McLean</em> as a doctor back to <em>McQueen</em> and produces final understanding of <em>McQueen</em> as a researcher in psychiatry.   </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container is-max-desktop">
+          <!-- Abstract. -->
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Control LLM reasoning with <span class="dnerf">SelfIE</span></h2>
+              <div class="content has-text-justified">
+                <p> The text interpretation produced by <span class="dnerf">SelfIE</span> enables new modes intervening on model weights and control model reasoning behaviors. We propose two control methods based on <span class="dnerf">SelfIE</span> interpretation: <b>Supervised Control</b> and <b>Reinforcement Control</b>. </p>
+                <p>Compared to previous model editing methods,</p>
+                  <ol>
+                     <li>Our methods only requires gradient calculation of individual layer instead of entire model.</li>
+                    <li>Our methods can edit open-ended concepts beyond simple facts.</li>
+                    <li>Reinforcement Control does not require supervised target.</li>  
+
+                  </ol>
+                  <h3>Supervised Control.</h3>
+                  <p>Supervised Control modifies model weights so that a layer produces embeddings that interpret to some target interpretation.</p>
+                  <img src="static/images/supervised-control-final.svg" alt="Pipeline for supervised control">
+                  <p><b>Example: Change LLM's perception of an open-ended concept.</b> We applied Supervised Control on one layer so that LLM understands molotov cocktail as a drink. LLM is able to generalize this new understanding to complex reasoning that requires indirect understanding of molotov cocktail's nature.</p>
+                  <div class="control-example-images"><img src="static/images/molotov-editing-final.svg" alt="Supervised control example"></div>
+                  <p><b>Example: Overriding ethical preference in user prompt.</b> LLMs are susceptible to being steered to undesirable ethical ideas with user specification of moral beliefs in a prompt. We used Supervise Control to override user's specification of prioritizing humans over aliens in a hypothetical scenario. The control generalizes to unseen prompts, and we show the result is not memorization since LLM integrates the edited concept into coherent reasoning.</p>
+                  <div class="control-example-images"><img src="static/images/moral-editing.svg" alt="Supervised control example"></div>
+                  <h3>Reinforcement Control.</h3>
+                  <p>Previous works control LLM reasoning from output level with methods such as RLHF without needing supervised targets. We extend this class of method to produce reward signals by evaluating embedding interpretation text and adjust layer parameter to maximize reward. </p>
+                  <img src="static/images/reinforement-control-final.svg" alt="RC pipeline">
+                  <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the model control also refuses to answer questions about other unrelated criminal behaviors in prompt injection.</p>
+                  <div class="safety-solved-detail-image"><img src="static/images/safety-solved-details.svg" alt="Reinforcement control example"></div>
+              </div>
+            </div>
+          </div>
+
+
+        
+    
+
     <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
     <!--/ Animation. -->
 
 
@@ -417,26 +279,28 @@
 
         <div class="content has-text-justified">
           <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
+            <b>LLM model interpretation</b><br>
+            Interpret LLM through probing<br>
+            <a href="https://arxiv.org/abs/2202.05262">Locating and Editing Factual Associations in GPT</a><br>
+            <a href="https://arxiv.org/abs/2106.00737">Implicit Representations of Meaning in Neural Language Models</a><br>
+            Interpret LLM through decoding next tokens<br>
+            <a href="https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens">interpreting GPT: the logit lens</a><br>
+            <a href="https://arxiv.org/abs/2303.08112">Eliciting Latent Predictions from Transformers with the Tuned Lens</a><br>
+            <a href="https://arxiv.org/abs/2311.04897">Future Lens: Anticipating Subsequent Tokens from a Single Hidden State</a><br>
+            Hypothesis of hierachial reasoning inside of LLM <br>
+            <a href="https://transformer-circuits.pub/2023/july-update/index.html#safety-features">What would be the most safety-relevant features in Language Models?</a><br>
           </p>
           <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+            <b>LLM model editing</b><br>
+            <a href="https://arxiv.org/abs/2202.05262">Locating and Editing Factual Associations in GPT</a><br>
+            <a href="https://arxiv.org/abs/2110.11309">Fast Model Editing at Scale</a><br>
+            <a href="https://arxiv.org/abs/2310.01405">Representation Engineering: A Top-Down Approach to AI Transparency</a><br>
           </p>
         </div>
       </div>
     </div>
     <!--/ Concurrent Work. -->
-
+    
   </div>
 </section>
 
@@ -456,29 +320,13 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            Webpage template comes from <a
+            href="https://github.com/nerfies/nerfies.github.io">this project</a> and <a
+            href="https://viper.cs.columbia.edu/">this project</a>
           </p>
         </div>
       </div>
