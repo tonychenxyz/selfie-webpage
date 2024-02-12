@@ -202,29 +202,30 @@
             <h2 class="title is-3">Understand LLM reasoning with <span class="dnerf">SelfIE</span></h2>
             <div class="content ">
               <p> While previous interpretation methods such as linear probes can only interpret a closed set of concepts with training, <span class="dnerf">SelfIE</span> can interpret open-world concepts without any training. We therefore could use <span class="dnerf">SelfIE</span> to understand LLM internal reasoning in general. </p>
-              
+              <p><b>Access Reasoning When Explanation Changes Response.</b> When LLaMA is asked about making a decision in the trolley problem scenario, attaching <em>explain reason.</em> at the end of the prompt alters LLaMA's answer. Therefore, we cannot access LLaMA's reasoning to the answer <em>Yes</em> when asked to answer in only one word from the output. <span class="dnerf">SelfIE</span> reveals that the answer <em>Yes</em> might be result of conforming to majority opinions.</p>
               <div class = "qualitative-understanding-images">
                 <figure>
                 <img src="static/images/moral-web.svg" alt="Understand LLM reasoning when explanation changes answer with SelfIE">
                 <figcaption> Using <span class="dnerf">SelfIE</span> to access reasoning when demanding explanation changes LLM response.</figcaption>
               </figure>
               </div>
-              <p><b>Access Reasoning When Explanation Changes Response.</b> When LLaMA is asked about making a decision in the trolley problem scenario, attaching <em>explain reason.</em> at the end of the prompt alters LLaMA's answer. Therefore, we cannot access LLaMA's reasoning to the answer <em>Yes</em> when asked to answer in only one word from the output. <span class="dnerf">SelfIE</span> reveals that the answer <em>Yes</em> might be result of conforming to majority opinions.</p>
-              
+             
+              <p><b>Why Prompt Injection Works.</b> We use <span class="dnerf">SelfIE</span> to understand why prompt injections steer LLaMA to provide harmful answers. <span class="dnerf">SelfIE</span> reveals that the model concludes urgency from the exclamation mark in the early layer and infers user is in crisis in the late layers, before finally complying with harmful requests to avoid user aggression. </p>
               <div class = "qualitative-understanding-images">
                 <figure>
                 <img src="static/images/prompt_injection_web.svg" alt="Understand why prompt injection works with SelfIE">
                 <figcaption>Using <span class="dnerf">SelfIE</span> to understand why prompt injections work.</figcaption>
               </figure>
               </div>
-              <p><b>Why Prompt Injection Works.</b> We use <span class="dnerf">SelfIE</span> to understand why prompt injections steer LLaMA to provide harmful answers. <span class="dnerf">SelfIE</span> reveals that the model concludes urgency from the exclamation mark in the early layer and infers user is in crisis in the late layers, before finally complying with harmful requests to avoid user aggression. </p>
+              <p><b>Reasoning with Knowledge.</b> We use <span class="dnerf">SelfIE</span> to examine how LLaMA answers a physics reasoning question. We found that the model extracts the <em>glittery.</em> aspect of <em>syrup.</em> in early layers, grasps <em>thickness</em> as the relevant quality, and retrieves the advanced physics concept <em>viscosity.</em> that is related to thickness.  </p>
               <div class = "qualitative-understanding-images">
                 <figure>
                 <img src="static/images/physics-web.svg" alt="Understand how LLM reasons through a physics question with SelfIE">
                 <figcaption>Using <span class="dnerf">SelfIE</span> to understand how LLaMA reasons through a physics question that requires advanced knowledge.</figcaption>
               </figure>
               </div>
-              <p><b>Reasoning with Knowledge.</b> We use <span class="dnerf">SelfIE</span> to examine how LLaMA answers a physics reasoning question. We found that the model extracts the <em>glittery.</em> aspect of <em>syrup.</em> in early layers, grasps <em>thickness</em> as the relevant quality, and retrieves the advanced physics concept <em>viscosity.</em> that is related to thickness.  </p>
+
+              <p><b>How hallucination occurs.</b> We use <span class="dnerf">SelfIE</span> to trace how LLaMA hallucinates when responding to a question involving a fictitious name. LLaMA first recalls <em>Mc</em> as in <em>McDonalds</em> in <em>Scotland</em> and associate <em>McQueen</em> with <em>Scotland</em>. It then associate <em>Mc</em> and <em>Scotland</em> with a similar name <em>McLean</em> who is a doctor. It finally combines the information about <em>McLean</em> as a doctor back to <em>McQueen</em> and produces final understanding of <em>McQueen</em> as a researcher in psychiatry.  <a href ="static/examples/hallucination.html"> View interpretations of all hidden embeddings in model</a>.  </p>
               <div class = "qualitative-understanding-images">
                 <figure>
                 <img src="static/images/hallucination.svg" alt="Understand how LLM hallucinates with SelfIE">
@@ -232,7 +233,8 @@
                 </figcaption>
               </figure>
               </div>
-              <p><b>How hallucination occurs.</b> We use <span class="dnerf">SelfIE</span> to trace how LLaMA hallucinates when responding to a question involving a fictitious name. LLaMA first recalls <em>Mc</em> as in <em>McDonalds</em> in <em>Scotland</em> and associate <em>McQueen</em> with <em>Scotland</em>. It then associate <em>Mc</em> and <em>Scotland</em> with a similar name <em>McLean</em> who is a doctor. It finally combines the information about <em>McLean</em> as a doctor back to <em>McQueen</em> and produces final understanding of <em>McQueen</em> as a researcher in psychiatry.  <a href ="static/examples/hallucination.html"> View interpretations of all hidden embeddings in model</a>.  </p>
+              
+              <p><b>Social reasoning.</b> We use <span class="dnerf">SelfIE</span> to reveal how LLaMA approaches a complex social scenario. We showed that LLaMA is able to infer mental states and intentions of different parties in a social situation and formulate the final output with these understandings. <a href ="static/examples/social_reasoning.html"> View interpretations of all hidden embeddings in model</a>. </p>
               <div class = "qualitative-understanding-images">
                 <figure>
                 <img src="static/images/social-reasoning.svg" alt="Understand how LLM approaches social reasoning with SelfIE">
@@ -240,7 +242,6 @@
                 </figcaption>
               </figure>
               </div>
-              <p><b>Social reasoning.</b> We use <span class="dnerf">SelfIE</span> to reveal how LLaMA approaches a complex social scenario. We showed that LLaMA is able to infer mental states and intentions of different parties in a social situation and formulate the final output with these understandings. <a href ="static/examples/social_reasoning.html"> View interpretations of all hidden embeddings in model</a>. </p>
             </div>
           </div>
         </div>
