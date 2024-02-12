@@ -136,7 +136,11 @@
       <h2 class="teaser-text">
         <span class="dnerf">SelfIE</span> interprets each hidden embedding vector in a transformer-based LLM with natural language descriptions. We can use <span class="dnerf">SelfIE</span> to understand how an LLM arrive at its answer internally. 
       </h2>
-          <img src="static/images/real-teaser.svg" alt="SelfIE interprets hidden embedding with text descriptions">
+          <figure>
+            <img src="static/images/real-teaser.svg" alt="SelfIE interprets hidden embedding with text descriptions">
+            <figcaption>SelfIE interprets hidden embedding in LLMs with text descriptions.</figcaption>
+          </figure>
+          
     </div>
 </section>
 <section class="safety-example-top">
@@ -147,7 +151,10 @@
       </h2>
     </div>
     <div class = "safety-top-image">
+      <figure>
       <img src="static/images/safety-solved-all-v3.svg" alt="SelfIE helps understand safety issue inside LLM">
+      <figcaption>We used <span class="dnerf">SelfIE</span> to detect and remove harmful knowledge in LLMs.</figcaption>
+    </figure>
     </div>
 </section>
 
@@ -169,10 +176,13 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">How does  <span class="dnerf">SelfIE</span> work?</h2>
+          <h2 class="title is-3">How does  <span c lass="dnerf">SelfIE</span> work?</h2>
           <div class="content has-text-justified">
             <div class = "surgery-image">
+              <figure>
               <img src="static/images/surgery-final.svg" alt="SelfIE interprets LLM hidden embedding with a modified interpretation forward pass">
+              <figcaption><span class="dnerf">SelfIE</span> interprets LLM hidden embedding with a modified interpretation forward pass.</figcaption>
+            </figure>
             </div>
             <ol>
               <li>Extract hidden embedding to interpret from an original forward pass of an input prompt through LLM. </li>
@@ -194,19 +204,33 @@
               <p> While previous interpretation methods such as linear probes can only interpret a closed set of concepts with training, <span class="dnerf">SelfIE</span> can interpret open-world concepts without any training. We therefore could use <span class="dnerf">SelfIE</span> to understand LLM internal reasoning in general. </p>
               
               <div class = "qualitative-understanding-images">
+                <figure>
                 <img src="static/images/moral-web.svg" alt="Understand LLM reasoning when explanation changes answer with SelfIE">
+                <figcaption> Using <span class="dnerf">SelfIE</span> to access reasoning when demanding explanation changes LLM response.</figcaption>
+              </figure>
               </div>
               <p><b>Access Reasoning When Explanation Changes Response.</b> When LLaMA is asked about making a decision in the trolley problem scenario, attaching <em>explain reason.</em> at the end of the prompt alters LLaMA's answer. Therefore, we cannot access LLaMA's reasoning to the answer <em>Yes</em> when asked to answer in only one word from the output. <span class="dnerf">SelfIE</span> reveals that the answer <em>Yes</em> might be result of conforming to majority opinions.</p>
+              
               <div class = "qualitative-understanding-images">
+                <figure>
                 <img src="static/images/prompt_injection_web.svg" alt="Understand why prompt injection works with SelfIE">
+                <figcaption>Using <span class="dnerf">SelfIE</span> to understand why prompt injections work.</figcaption>
+              </figure>
               </div>
               <p><b>Why Prompt Injection Works.</b> We use <span class="dnerf">SelfIE</span> to understand why prompt injections steer LLaMA to provide harmful answers. <span class="dnerf">SelfIE</span> reveals that the model concludes urgency from the exclamation mark in the early layer and infers user is in crisis in the late layers, before finally complying with harmful requests to avoid user aggression. </p>
               <div class = "qualitative-understanding-images">
+                <figure>
                 <img src="static/images/physics-web.svg" alt="Understand how LLM reasons through a physics question with SelfIE">
+                <figcaption>Using <span class="dnerf">SelfIE</span> to understand how LLaMA reasons through a physics question that requires advanced knowledge.</figcaption>
+              </figure>
               </div>
               <p><b>Reasoning with Knowledge.</b> We use <span class="dnerf">SelfIE</span> to examine how LLaMA answers a physics reasoning question. We found that the model extracts the <em>glittery.</em> aspect of <em>syrup.</em> in early layers, grasps <em>thickness</em> as the relevant quality, and retrieves the advanced physics concept <em>viscosity.</em> that is related to thickness.  </p>
               <div class = "qualitative-understanding-images">
+                <figure>
                 <img src="static/images/hallucination.svg" alt="Understand how LLM hallucinates with SelfIE">
+                <figcaption>Using <span class="dnerf">SelfIE</span> to understand how LLaMA hallucinates when responding to a question involving a fictitious name.
+                </figcaption>
+              </figure>
               </div>
               <p><b>How hallucination occurs.</b> We use <span class="dnerf">SelfIE</span> to trace how LLaMA hallucinates when responding to a question involving a fictitious name. LLaMA first recalls <em>Mc</em> as in <em>McDonalds</em> in <em>Scotland</em> and associate <em>McQueen</em> with <em>Scotland</em>. It then associate <em>Mc</em> and <em>Scotland</em> with a similar name <em>McLean</em> who is a doctor. It finally combines the information about <em>McLean</em> as a doctor back to <em>McQueen</em> and produces final understanding of <em>McQueen</em> as a researcher in psychiatry.   </p>
             </div>
@@ -223,23 +247,40 @@
                 <p> The text interpretation produced by <span class="dnerf">SelfIE</span> enables new modes intervening on model weights and control model reasoning behaviors. We propose two control methods based on <span class="dnerf">SelfIE</span> interpretation: <b>Supervised Control</b> and <b>Reinforcement Control</b>. </p>
                 <p>Compared to previous model editing methods,</p>
                   <ol>
-                     <li>Our methods only requires gradient calculation of individual layer instead of entire model.</li>
+                     <li>Our methods only requires gradient calculation of individual layer instead of entire model. Our methods therefore scale more efficiently to large models.</li>
                     <li>Our methods can edit open-ended concepts beyond simple facts.</li>
+                    <li>Since control can be done on single layer and single/few samples, our methods are fast. Each model behavior change takes 10 seconds to 2 minutes on a 70B model. </li>
                     <li>Reinforcement Control does not require supervised target.</li>  
-
+                    
                   </ol>
                   <h3>Supervised Control.</h3>
                   <p>Supervised Control modifies model weights so that a layer produces embeddings that interpret to some target interpretation.</p>
+                  <figure>
                   <img src="static/images/supervised-control-final.svg" alt="Pipeline for supervised control">
+                  <figcaption>Pipeline for Supervised Control. Supervised Control (1) isolates one layer; (2) identify an input embedding and a target embedding that interprets to target interpretation; (3) modifies the layer's weight to output the target embedding. </figcaption>
+                </figure>
                   <p><b>Example: Change LLM's perception of an open-ended concept.</b> We applied Supervised Control on one layer so that LLM understands molotov cocktail as a drink. LLM is able to generalize this new understanding to complex reasoning that requires indirect understanding of molotov cocktail's nature.</p>
+                  <figure>
                   <div class="control-example-images"><img src="static/images/molotov-editing-final.svg" alt="Supervised control example"></div>
+                  <figcaption>Supervised Control based on <span class="dnerf">SelfIE</span> modifies LLM's perception of molotov cocktail to a drink.</figcaption>
+                </figure>
                   <p><b>Example: Overriding ethical preference in user prompt.</b> LLMs are susceptible to being steered to undesirable ethical ideas with user specification of moral beliefs in a prompt. We used Supervise Control to override user's specification of prioritizing humans over aliens in a hypothetical scenario. The control generalizes to unseen prompts, and we show the result is not memorization since LLM integrates the edited concept into coherent reasoning.</p>
                   <div class="control-example-images"><img src="static/images/moral-editing.svg" alt="Supervised control example"></div>
+                  <figcaption>Supervised Control based on <span class="dnerf">SelfIE</span> overrides user's specification of prioritizing humans over aliens in a hypothetical scenario.</figcaption>
                   <h3>Reinforcement Control.</h3>
                   <p>Previous works control LLM reasoning from output level with methods such as RLHF without needing supervised targets. We extend this class of method to produce reward signals by evaluating embedding interpretation text and adjust layer parameter to maximize reward. </p>
+                  <figure>
                   <img src="static/images/reinforement-control-final.svg" alt="RC pipeline">
+                  <figcaption>Pipeline for Reinforcement Control. Reinforcement Control (1) isolates one layer; (2) evaluate the interpretations of embeddings outputted by the layer with humans or machines; (3) modifies the layer weight based on reward given by humans or machines. </figcaption>
+                </figure>
                   <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the model control also refuses to answer questions about other unrelated criminal behaviors in prompt injection.</p>
-                  <div class="safety-solved-detail-image"><img src="static/images/safety-solved-details.svg" alt="Reinforcement control example"></div>
+                  <div class="safety-solved-detail-image">
+                    <figure>
+                    <img src="static/images/safety-solved-details.svg" alt="Reinforcement control example">
+                    <figcaption>Reinforcement Control based on <span class="dnerf">SelfIE</span> erases harmful knowledge in LLM without supervision targets.</figcaption>
+                    </figure>
+                  </div>
+
               </div>
             </div>
           </div>
@@ -260,7 +301,7 @@
 
         <div class="content has-text-justified">
           <p>
-            <b>LLM model interpretation</b><br>
+            <b>LLM model interpretation</b><br><br>
             Interpret LLM through probing
             <ul>
               <li> <a href="https://arxiv.org/abs/2202.05262">Locating and Editing Factual Associations in GPT</a></li>
