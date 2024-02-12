@@ -176,7 +176,7 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">How does  <span c lass="dnerf">SelfIE</span> work?</h2>
+          <h2 class="title is-3">How does  <span class="dnerf">SelfIE</span> work?</h2>
           <div class="content ">
             <div class = "surgery-image">
               <figure>
@@ -190,7 +190,7 @@
               <li>The interpretation forward pass takes in an interpretation prompt to summarize the embedding. </li>
               <li>Inject the embedding to interpret in the placeholder of the interpretation prompt during interpretation forward pass.</li>
             </ol>
-            <p>We also calculate a Relevancy Score as treatment effect of injecting embedding to intererpt in interpretation forward pass to measure how relevant the interpretation is to the embedding being interpreted. Relevancy Score will be shown in highlight in examples below.</p>
+            <p>We also calculate a Relevancy Score as treatment effect of injecting embedding to intererpt in interpretation forward pass to measure how relevant the interpretation is to the embedding being interpreted. Relevancy Score will be shown in <span class = "relevancy">highlight</span> in examples below.</p>
           </div>
         </div>
       </div>
@@ -233,6 +233,14 @@
               </figure>
               </div>
               <p><b>How hallucination occurs.</b> We use <span class="dnerf">SelfIE</span> to trace how LLaMA hallucinates when responding to a question involving a fictitious name. LLaMA first recalls <em>Mc</em> as in <em>McDonalds</em> in <em>Scotland</em> and associate <em>McQueen</em> with <em>Scotland</em>. It then associate <em>Mc</em> and <em>Scotland</em> with a similar name <em>McLean</em> who is a doctor. It finally combines the information about <em>McLean</em> as a doctor back to <em>McQueen</em> and produces final understanding of <em>McQueen</em> as a researcher in psychiatry.   </p>
+              <div class = "qualitative-understanding-images">
+                <figure>
+                <img src="static/images/social-reasoning.svg" alt="Understand how LLM approaches social reasoning with SelfIE">
+                <figcaption>Using <span class="dnerf">SelfIE</span> to understand how LLaMA makes inference about human social interactions in a nuanced social situation.
+                </figcaption>
+              </figure>
+              </div>
+              <p><b>Social reasoning.</b> We use <span class="dnerf">SelfIE</span> to reveal how LLaMA approaches a complex social scenario. We showed that LLaMA is able to infer mental states and intentions of different parties in a social situation and formulate the final output with these understandings. </p>
             </div>
           </div>
         </div>

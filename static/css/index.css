@@ -248,3 +248,7 @@ figcaption {
 .content{
   text-align: left;
 }
+
+.relevancy{
+  background-color: rgba(232, 208, 147, 0.698) !important;
+}
