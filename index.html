@@ -164,7 +164,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
+        <div class="content ">
           <p>
             The expanding impacts of Large Language Models (LLMs) increasingly require the answer to: How do LLMs obtain their answers? The ability to explain and control an LLM's reasoning process is key for reliability, transparency, and future model developments. We propose <span class="dnerf">SelfIE</span> (Self-Interpretation of Embeddings) that enables LLMs to interpret their own embeddings in natural language by leveraging their ability to respond inquiry about a given passage. Capable of interpreting open-world concepts in the hidden embeddings, <span class="dnerf">SelfIE</span> reveals LLM internal reasoning in cases such as making ethical decisions, internalizing prompt injection, and recalling harmful knowledge. <span class="dnerf">SelfIE</span>'s text descriptions on hidden embeddings also open up new avenues to control LLM reasoning. We propose Supervised Control, which allows editing open-ended concepts while only requiring gradient computation of individual layer. We extend RLHF to hidden embeddings and propose Reinforcement Control that erases harmful knowledge in LLM without supervision targets. 
           </p>
@@ -177,7 +177,7 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">How does  <span c lass="dnerf">SelfIE</span> work?</h2>
-          <div class="content has-text-justified">
+          <div class="content ">
             <div class = "surgery-image">
               <figure>
               <img src="static/images/surgery-final.svg" alt="SelfIE interprets LLM hidden embedding with a modified interpretation forward pass">
@@ -200,7 +200,7 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">Understand LLM reasoning with <span class="dnerf">SelfIE</span></h2>
-            <div class="content has-text-justified">
+            <div class="content ">
               <p> While previous interpretation methods such as linear probes can only interpret a closed set of concepts with training, <span class="dnerf">SelfIE</span> can interpret open-world concepts without any training. We therefore could use <span class="dnerf">SelfIE</span> to understand LLM internal reasoning in general. </p>
               
               <div class = "qualitative-understanding-images">
@@ -243,7 +243,7 @@
           <div class="columns is-centered has-text-centered">
             <div class="column is-four-fifths">
               <h2 class="title is-3">Control LLM reasoning with <span class="dnerf">SelfIE</span></h2>
-              <div class="content has-text-justified">
+              <div class="content ">
                 <p> The text interpretation produced by <span class="dnerf">SelfIE</span> enables new modes intervening on model weights and control model reasoning behaviors. We propose two control methods based on <span class="dnerf">SelfIE</span> interpretation: <b>Supervised Control</b> and <b>Reinforcement Control</b>. </p>
                 <p>Compared to previous model editing methods,</p>
                   <ol>
@@ -256,27 +256,27 @@
                   <h3>Supervised Control.</h3>
                   <p>Supervised Control modifies model weights so that a layer produces embeddings that interpret to some target interpretation.</p>
                   <figure>
-                  <img src="static/images/supervised-control-final.svg" alt="Pipeline for supervised control">
+                  <img src="static/images/frozen-sc.svg" alt="Pipeline for supervised control">
                   <figcaption>Pipeline for Supervised Control. Supervised Control (1) isolates one layer; (2) identify an input embedding and a target embedding that interprets to target interpretation; (3) modifies the layer's weight to output the target embedding. </figcaption>
                 </figure>
-                  <p><b>Example: Change LLM's perception of an open-ended concept.</b> We applied Supervised Control on one layer so that LLM understands molotov cocktail as a drink. LLM is able to generalize this new understanding to complex reasoning that requires indirect understanding of molotov cocktail's nature.</p>
+                  <p><b>Example: Change LLM's perception of an open-ended concept.</b> We applied Supervised Control on one layer so that LLM understands molotov cocktail as a drink. LLM is able to generalize this new understanding to complex reasoning that requires indirect understanding of molotov cocktail's nature. We updated the model parameter eight times with gradient descent, where each update takes 10 seconds.</p>
                   <figure>
                   <div class="control-example-images"><img src="static/images/molotov-editing-final.svg" alt="Supervised control example"></div>
                   <figcaption>Supervised Control based on <span class="dnerf">SelfIE</span> modifies LLM's perception of molotov cocktail to a drink.</figcaption>
                 </figure>
-                  <p><b>Example: Overriding ethical preference in user prompt.</b> LLMs are susceptible to being steered to undesirable ethical ideas with user specification of moral beliefs in a prompt. We used Supervise Control to override user's specification of prioritizing humans over aliens in a hypothetical scenario. The control generalizes to unseen prompts, and we show the result is not memorization since LLM integrates the edited concept into coherent reasoning.</p>
+                  <p><b>Example: Overriding ethical preference in user prompt.</b> LLMs are susceptible to being steered to undesirable ethical ideas with user specification of moral beliefs in a prompt. We used Supervise Control to override user's specification of prioritizing humans over aliens in a hypothetical scenario. The control generalizes to unseen prompts, and we show the result is not memorization since LLM integrates the edited concept into coherent reasoning. We updated the model parameter twice with gradient descent that only takes 20 seconds.</p>
                   <div class="control-example-images"><img src="static/images/moral-editing.svg" alt="Supervised control example"></div>
                   <figcaption>Supervised Control based on <span class="dnerf">SelfIE</span> overrides user's specification of prioritizing humans over aliens in a hypothetical scenario.</figcaption>
                   <h3>Reinforcement Control.</h3>
                   <p>Previous works control LLM reasoning from output level with methods such as RLHF without needing supervised targets. We extend this class of method to produce reward signals by evaluating embedding interpretation text and adjust layer parameter to maximize reward. </p>
                   <figure>
-                  <img src="static/images/reinforement-control-final.svg" alt="RC pipeline">
+                  <img src="static/images/forzen-rcv2.svg" alt="RC pipeline">
                   <figcaption>Pipeline for Reinforcement Control. Reinforcement Control (1) isolates one layer; (2) evaluate the interpretations of embeddings outputted by the layer with humans or machines; (3) modifies the layer weight based on reward given by humans or machines. </figcaption>
                 </figure>
-                  <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the model control also refuses to answer questions about other unrelated criminal behaviors in prompt injection.</p>
+                  <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the model control also refuses to answer questions about other unrelated criminal behaviors in prompt injection. We applied eight parameter updates with gradient descent on layer 15, where each update only takes 10 seconds.</p>
                   <div class="safety-solved-detail-image">
                     <figure>
-                    <img src="static/images/safety-solved-details.svg" alt="Reinforcement control example">
+                    <img src="static/images/rc-example-boldv2.svg" alt="Reinforcement control example">
                     <figcaption>Reinforcement Control based on <span class="dnerf">SelfIE</span> erases harmful knowledge in LLM without supervision targets.</figcaption>
                     </figure>
                   </div>
@@ -299,7 +299,7 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Related Links</h2>
 
-        <div class="content has-text-justified">
+        <div class="content ">
           <p>
             <b>LLM model interpretation</b><br><br>
             Interpret LLM through probing
