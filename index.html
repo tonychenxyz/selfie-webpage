@@ -279,7 +279,7 @@
                   <h3>Reinforcement Control.</h3>
                   <p>Previous works control LLM reasoning from output level with methods such as RLHF without needing supervised targets. We extend this class of method to produce reward signals by evaluating embedding interpretation text and adjust layer parameter to maximize reward. </p>
                   <figure>
-                  <img src="static/images/forzen-rcv2.svg" alt="RC pipeline">
+                  <img src="static/images/rc-nooutput.pdf" alt="RC pipeline">
                   <figcaption>Pipeline for Reinforcement Control. Reinforcement Control (1) isolates one layer; (2) evaluate the interpretations of embeddings outputted by the layer with humans or machines; (3) modifies the layer weight based on reward given by humans or machines. </figcaption>
                 </figure>
                   <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the model control also refuses to answer questions about other unrelated criminal behaviors in prompt injection. We applied eight parameter updates with gradient descent on layer 15, where each update only takes 10 seconds.</p>
