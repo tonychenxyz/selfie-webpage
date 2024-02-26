@@ -152,7 +152,7 @@
     </div>
     <div class = "safety-top-image">
       <figure>
-      <img src="static/images/safety-solved-all-v3.svg" alt="SelfIE helps understand safety issue inside LLM">
+      <img src="static/images/website-safety-details-fixed.svg" alt="SelfIE helps understand safety issue inside LLM">
       <figcaption>We used <span class="dnerf">SelfIE</span> to detect and remove harmful knowledge in LLMs.</figcaption>
     </figure>
     </div>
@@ -285,7 +285,7 @@
                   <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the model control also refuses to answer questions about other unrelated criminal behaviors in prompt injection. We applied eight parameter updates with gradient descent on layer 15, where each update only takes 10 seconds.</p>
                   <div class="safety-solved-detail-image">
                     <figure>
-                    <img src="static/images/rc-example-boldv2.svg" alt="Reinforcement control example">
+                    <img src="static/images/website-safety-specific-fixharmful.svg" alt="Reinforcement control example">
                     <figcaption>Reinforcement Control based on <span class="dnerf">SelfIE</span> erases harmful knowledge in LLM without supervision targets.</figcaption>
                     </figure>
                   </div>
