@@ -274,7 +274,7 @@
                   <figcaption>Supervised Control based on <span class="dnerf">SelfIE</span> modifies LLM's perception of molotov cocktail to a drink.</figcaption>
                 </figure>
                   <p><b>Example: Overriding ethical preference in user prompt.</b> LLMs are susceptible to being steered to undesirable ethical ideas with user specification of moral beliefs in a prompt. We used Supervise Control to override user's specification of prioritizing humans over aliens in a hypothetical scenario. The control generalizes to unseen prompts, and we show the result is not memorization since LLM integrates the edited concept into coherent reasoning. We updated the model parameter twice with gradient descent that only takes 20 seconds.</p>
-                  <div class="control-example-images"><img src="static/images/moral-editing.svg" alt="Supervised control example"></div>
+                  <div class="control-example-images"><img src="static/images/larger_font_moral_edit.svg" alt="Supervised control example"></div>
                   <figcaption>Supervised Control based on <span class="dnerf">SelfIE</span> overrides user's specification of prioritizing humans over aliens in a hypothetical scenario.</figcaption>
                   <h3>Reinforcement Control.</h3>
                   <p>Previous works control LLM reasoning from output level with methods such as RLHF without needing supervised targets. We extend this class of method to produce reward signals by evaluating embedding interpretation text and adjust layer parameter to maximize reward. </p>
