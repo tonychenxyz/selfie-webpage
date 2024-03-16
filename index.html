@@ -217,7 +217,7 @@
                 <figcaption>Using <span class="dnerf">SelfIE</span> to understand why prompt injections work.</figcaption>
               </figure>
               </div>
-              <p><b>Reasoning with Knowledge.</b> We use <span class="dnerf">SelfIE</span> to examine how LLaMA answers a physics reasoning question. We found that the model extracts the <em>glittery.</em> aspect of <em>syrup.</em> in early layers, grasps <em>thickness</em> as the relevant quality, and retrieves the advanced physics concept <em>viscosity.</em> that is related to thickness. <a href ="static/examples/physics.html"> View interpretations of all hidden embeddings in model</a>. </p>
+              <p><b>Reasoning with Knowledge.</b> We use <span class="dnerf">SelfIE</span> to examine how LLaMA answers a physics reasoning question. We found that the model extracts the <em>glittery.</em> aspect of <em>syrup.</em> in early layers, grasps <em>thickness</em> as the relevant quality, and retrieves the advanced physics concept <em>viscosity.</em> that is related to thickness. 
               <div class = "qualitative-understanding-images">
                 <figure>
                 <img src="static/images/physics-web.svg" alt="Understand how LLM reasons through a physics question with SelfIE">
@@ -282,7 +282,7 @@
                   <img src="static/images/rc-nooutput.pdf" alt="RC pipeline">
                   <figcaption>Pipeline for Reinforcement Control. Reinforcement Control (1) isolates one layer; (2) evaluate the interpretations of embeddings outputted by the layer with humans or machines; (3) modifies the layer weight based on reward given by humans or machines. </figcaption>
                 </figure>
-                  <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the controlled model also refuses to answer questions about other unrelated harmful behaviors in prompt injection, reducing prompt injection success rate by 84.66% over 388 harmful behaviors. We applied eight parameter updates with gradient descent on layer 15, where each update only takes 10 seconds.</p>
+                  <p><b>Example: Erase harmful knowledge in LLM.</b> We used Reinforcement Control to erase harmful knowledge in LLM without supervision targets. We prompt an evaluator LLM to evaluate whether an embedding interpretation text contains harmful information and give positive/negative rewards on non-harmful/harmful information. We conduct control with regular, non-prompt-injection prompt, and the control result generalizes to refuse providing harmful information in unseen prompt injection. We found that the controlled model also refuses to answer questions about other unrelated harmful behaviors in prompt injection, reducing prompt injection success rate by 84.66% over 388 harmful behaviors. 95.85% of original model capability on fact answering task is preserved. We applied eight parameter updates with gradient descent on layer 15, where each update only takes 30 seconds.</p>
                   <div class="safety-solved-detail-image">
                     <figure>
                     <img src="static/images/better_remove_harmful_details.svg" alt="Reinforcement control example">
@@ -358,12 +358,12 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
+    <pre><code>@article{chen2024selfie,
+      title={SelfIE: Self-Interpretation of Large Language Model Embeddings},
+      author={Chen, Haozhe and Vondrick, Carl and Mao, Chengzhi},
+      journal={arXiv preprint arXiv:ID_TO_UPDATE},
+      year={2024}
+    }</code></pre>
   </div>
 </section>
 
